@@ -50,6 +50,8 @@ services:
             - 5432:5432
         networks:
             - nesjs-network
+        volumes:
+            - nestjs-volume-psql:/var/lib/postgresql/data
         environment:
             - POSTGRES_DATABASE=nestjs-prisma
             - POSTGRES_USER=vector
@@ -58,3 +60,5 @@ services:
 
 networks:
     nesjs-network:
+volumes:
+    nestjs-volume-psql:
