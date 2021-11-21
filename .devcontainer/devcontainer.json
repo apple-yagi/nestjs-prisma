@@ -8,8 +8,9 @@
         "dsznajder.es7-react-js-snippets",
         "xabikos.javascriptsnippets",
         "esbenp.prettier-vscode",
-        "Prisma.prisma",
-        "Microsoft.eslint"
+        "prisma.prisma",
+        "dbaeumer.vscode-eslint",
+        "ms-azuretools.vscode-docker"
     ],
     "postCreateCommand": "apk update && apk add git",
     "shutdownAction": "stopCompose"
