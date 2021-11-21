@@ -10,10 +10,11 @@ services:
             dockerfile: ./Dockerfile
         command: npm run start:debug
         ports:
-            - 3000:3000
-            - 9229:9229
+            - 8080:8080
         networks:
             - nesjs-network
+        env_file:
+            - ./.env
         volumes:
             - .:/usr/src/app
             - /usr/src/app/node_modules
@@ -27,14 +28,25 @@ services:
             dockerfile: ./Dockerfile
         command: npm run start:prod
         ports:
-            - 3000:3000
-            - 9229:9229
+            - 8080:8080
         networks:
             - nesjs-network
+        env_file:
+            - ./.env.production
         volumes:
             - .:/usr/src/app
             - /usr/src/app/node_modules
         restart: unless-stopped
+    psql:
+        container_name: psql
+        image: postgres:14
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_DATABASE=nestjs-prisma
+            - POSTGRES_USER=vector
+            - POSTGRES_PASSWORD=vector
+            - POSTGRES_ROOT_PASSWORD=root
 
 networks:
     nesjs-network:
