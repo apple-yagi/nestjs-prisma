@@ -19,6 +19,8 @@ services:
         volumes:
             - .:/usr/src/app:cached
             - /usr/src/app/node_modules
+            - $HOME/.ssh:/root/.ssh
+            - $HOME/.gitconfig:/root/.gitconfig
         restart: unless-stopped
 
     prod:
