@@ -4,11 +4,9 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install -g pnpm && pnpm add -g pnpm
+RUN npm install glob rimraf
 
-RUN pnpm install glob rimraf
-
-RUN pnpm install --only=development
+RUN npm ci
 
 COPY . .
 
@@ -23,9 +21,7 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install -g pnpm && pnpm add -g pnpm
-
-RUN pnpm install --only=production
+RUN npm ci --only=production
 
 COPY . .
 
