@@ -1,0 +1,16 @@
+{
+    "name": "nestjs-prisma",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "dev",
+    "workspaceFolder": "/usr/src/app",
+    "extensions": [
+        "graphql.vscode-graphql",
+        "dsznajder.es7-react-js-snippets",
+        "xabikos.javascriptsnippets",
+        "esbenp.prettier-vscode",
+        "Prisma.prisma",
+        "Microsoft.eslint"
+    ],
+    "postCreateCommand": "apk update && apk add git",
+    "shutdownAction": "stopCompose"
+}
