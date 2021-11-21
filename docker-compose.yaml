@@ -11,14 +11,13 @@ services:
         command: npm run start:debug
         ports:
             - 8080:8080
-        networks:
-            - nesjs-network
         env_file:
             - ./.env
         volumes:
             - .:/usr/src/app
             - /usr/src/app/node_modules
         restart: unless-stopped
+
     prod:
         container_name: nestjs_api_prod
         image: nestjs-api-prod:1.0.0
@@ -29,14 +28,13 @@ services:
         command: npm run start:prod
         ports:
             - 8080:8080
-        networks:
-            - nesjs-network
         env_file:
             - ./.env.production
         volumes:
             - .:/usr/src/app
             - /usr/src/app/node_modules
         restart: unless-stopped
+
     psql:
         container_name: psql
         image: postgres:14
@@ -47,6 +45,3 @@ services:
             - POSTGRES_USER=vector
             - POSTGRES_PASSWORD=vector
             - POSTGRES_ROOT_PASSWORD=root
-
-networks:
-    nesjs-network:
