@@ -10,7 +10,7 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build
+RUN npm run generate && npm run build
 
 FROM node:16.13.0-alpine as production
 
