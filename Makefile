@@ -8,3 +8,11 @@ init:
 .PHONY: migrate
 migrate:
 	docker exec -it nestjs_api_dev ash -c "npm run migrate dev"
+
+.PHONY: dev
+dev:
+	docker compose up dev psql -d
+
+.PHONY: prod
+prod:
+	docker compose up prod psql -d
