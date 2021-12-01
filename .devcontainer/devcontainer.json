@@ -10,7 +10,8 @@
         "esbenp.prettier-vscode",
         "prisma.prisma",
         "dbaeumer.vscode-eslint",
-        "ms-azuretools.vscode-docker"
+        "ms-azuretools.vscode-docker",
+        "wix.vscode-import-cost"
     ],
     "postCreateCommand": "apk update && apk add git openssh",
     "shutdownAction": "stopCompose"
