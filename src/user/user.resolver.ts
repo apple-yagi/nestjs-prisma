@@ -1,8 +1,9 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { PaginationInput } from 'src/shared/args/pagenation.input';
 import { PrismaService } from 'src/shared/prisma.service';
 import { CreateUserInput } from './args/create-user.input';
 import { UniqueUserInput } from './args/unique-user.input';
+import { UpdateUserInput } from './args/update-user.input';
 import { User } from './user.entity';
 
 @Resolver('Users')
@@ -22,5 +23,13 @@ export class UserResolver {
   @Mutation(() => User)
   createUser(@Args() createUserInput: CreateUserInput) {
     return this.prisma.user.create({ data: createUserInput });
+  }
+
+  @Mutation(() => User)
+  updateUser(
+    @Args('id', { type: () => Int }) id: number,
+    @Args() updateUserInput: UpdateUserInput,
+  ) {
+    return this.prisma.user.update({ data: updateUserInput, where: { id } });
   }
 }
